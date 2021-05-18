@@ -28,7 +28,7 @@ export const ButtonAddVideo = ({onChange, editorState, modifier}) => {
 
   const onAddVideoOkClick = () => {
     //Я НЕ ЗНАЮ ЧТО ТУТ ПРОИСХОДИТ :_(
-    onChange(modifier(editorState, urlAddVideo))
+    onChange(modifier(editorState, {src: urlAddVideo}))
   }
 
   return (

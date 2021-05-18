@@ -119,6 +119,13 @@ export const Draft = () => {
         <button onClick={onHeaderTwoClick}>H2</button>
         <button onClick={onHeaderThreeClick}>H3</button>
 
+
+        <button
+          onClick={() => {console.log(contentState)}}
+        >
+          CONSOLE
+        </button>
+
         <ButtonAddImg
           editorState={editorState}
           onChange={setEditorState}
