@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import { EditorState, RichUtils } from 'draft-js';
+import { EditorState, RichUtils, convertToRaw, convertFromHTML } from 'draft-js';
 import Editor from '@draft-js-plugins/editor';
 import createImagePlugin from '@draft-js-plugins/image';
 import createVideoPlugin from '@draft-js-plugins/video';
@@ -8,6 +8,8 @@ import createResizeablePlugin from '@draft-js-plugins/resizeable';
 
 import {ButtonAddImg} from "./button-add-img";
 import {ButtonAddVideo} from "./button-add-video";
+
+import {stateToHTML} from 'draft-js-export-html';
 
 
 const DraftStl = styled.div`
@@ -48,7 +50,12 @@ export const Draft = () => {
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
 
   //Текущее значение:
-  const contentState = editorState.getCurrentContent()//.toJSON()
+  const getContent = () => {
+    const contentState = editorState.getCurrentContent()
+
+    let html = stateToHTML(contentState)
+    console.log(html)
+  }
 
   //Создание собственных стилей:
   const styleMap = {
@@ -121,7 +128,7 @@ export const Draft = () => {
 
 
         <button
-          onClick={() => {console.log(contentState)}}
+          onClick={getContent}
         >
           CONSOLE
         </button>
