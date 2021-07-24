@@ -1,11 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import {Draft} from "./draft-js/draft";
+import {Carousel} from "./carousel/carousel";
+import styled from "styled-components";
+import {GlobalStyles} from "./global-styles";
+
+const AppStl = styled.div`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 
 const app = (
-  <Draft />
+  <>
+    <GlobalStyles />
+    <AppStl>
+      <Carousel />
+    </AppStl>
+  </>
 )
 
 ReactDOM.render(app, document.getElementById('root'));
